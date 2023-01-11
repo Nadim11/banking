@@ -1,0 +1,15 @@
+feign:
+  client:
+    config:
+      default:
+        requestInterceptors:
+          com.fabrick.banking.feign.config.FeignConfig
+        errorDecoder:
+          com.fabrick.banking.feign.decoder.AccountManagementErrorDecoder
+
+api:
+  feign:
+    base-url: https://sandbox.platfr.io
+    credentials:
+      Auth-Schema: S2S
+      Api-Key: FXOVVXXHVCPVPBZXIJOBGUGSKHDNFRRQJP
