@@ -11,6 +11,6 @@ import lombok.*;
 @Setter
 public class AccountBalanceResponse implements Response {
 
-    private String          status;
-    private AccountBalance  payload;
+    private String                      status;
+    private AccountBalanceResponseDTO   payload;
 }

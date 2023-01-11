@@ -10,6 +10,6 @@ import lombok.*;
 @Setter
 public class AccountTransactionResponse implements Response {
 
-    private String                  status;
-    private AccountTransactionList  payload;
+    private String                              status;
+    private AccountTransactionListResponseDTO   payload;
 }

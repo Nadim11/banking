@@ -1,9 +1,9 @@
 package com.fabrick.banking.controller;
 
-import com.fabrick.banking.dto.request.AccountTransactionRequest;
+import com.fabrick.banking.dto.request.account.AccountTransactionRequest;
 import com.fabrick.banking.dto.response.account.AccountBalanceResponse;
 import com.fabrick.banking.dto.response.account.AccountTransactionResponse;
-import com.fabrick.banking.service.AccountManagementServiceImpl;
+import com.fabrick.banking.service.account.AccountManagementServiceImpl;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

@@ -1,7 +1,7 @@
 package com.fabrick.banking.feign.enumerable;
 
-import com.fabrick.banking.feign.response.account.AccountBalanceClientResponse;
-import com.fabrick.banking.feign.response.account.AccountTransactionClientResponse;
+import com.fabrick.banking.feign.model.response.account.AccountBalanceClientResponse;
+import com.fabrick.banking.feign.model.response.account.AccountTransactionClientResponse;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

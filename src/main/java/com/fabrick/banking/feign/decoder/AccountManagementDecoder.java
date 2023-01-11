@@ -1,9 +1,9 @@
 package com.fabrick.banking.feign.decoder;
 
 import com.fabrick.banking.feign.enumerable.ResponseType;
-import com.fabrick.banking.feign.response.account.AccountBalanceBaseResponse;
-import com.fabrick.banking.feign.response.account.AccountBalanceClientResponse;
-import com.fabrick.banking.feign.response.account.AccountTransactionClientResponse;
+import com.fabrick.banking.feign.model.response.account.AccountBalanceBaseResponse;
+import com.fabrick.banking.feign.model.response.account.AccountBalanceClientResponse;
+import com.fabrick.banking.feign.model.response.account.AccountTransactionClientResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import feign.FeignException;
 import feign.Response;

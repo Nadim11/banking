@@ -1,6 +1,7 @@
 package com.fabrick.banking.feign.config;
 
 import feign.RequestInterceptor;
+import feign.Retryer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 
@@ -21,5 +22,11 @@ public class FeignConfig {
             requestTemplate.header(AUTH_SCHEMA, authSchema);
             requestTemplate.header(API_KEY, apiKey);
         };
+    }
+
+    @Bean
+    public Retryer retryer(){
+        // we can implement our custom retryer
+        return new Retryer.Default();
     }
 }

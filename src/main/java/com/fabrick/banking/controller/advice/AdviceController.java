@@ -10,6 +10,7 @@ import com.fabrick.banking.exception.GenericException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -54,11 +55,24 @@ public class AdviceController {
         return handleException(new BadRequestException(errorResponse));
     }
 
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public ResponseEntity<ErrorReturnResponseDTO> handleException(HttpMessageNotReadableException ex){
+        BadRequestException badRequestException = new BadRequestException(
+                ErrorReturnResponseDTO.builder()
+                        .status(ErrorConstant.KO)
+                        .errors(List.of(
+                                ErrorResponseDTO
+                                        .builder()
+                                        .code(ErrorsEnum.INVALID_OR_MISSING_FIELD.name())
+                                        .description(ex.getMessage())
+                                        .build()
+                        ))
+                        .build()
+        );
+        return handleException(badRequestException);
+    }
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorReturnResponseDTO> handleException(Exception ex){
-        if(ex.getCause().getCause() instanceof BadRequestException badRequestException){
-            return handleException(badRequestException);
-        }
         return handleException(new GenericException(buildExceptionErrorResponse()));
     }
 

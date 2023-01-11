@@ -4,8 +4,6 @@ feign:
       default:
         requestInterceptors:
           com.fabrick.banking.feign.config.FeignConfig
-        errorDecoder:
-          com.fabrick.banking.feign.decoder.AccountManagementErrorDecoder
 
 api:
   feign:
