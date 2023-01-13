@@ -23,7 +23,7 @@ public class APIFeignConstants {
     @NoArgsConstructor(access = AccessLevel.PRIVATE)
     public static class PaymentsMoneyTransfer{
         public static final String CREATE_MONEY_TRANSFER = BASE_URL + "/payments/money-transfers";
-        public static final String CLIENT_NAME = "payment";
+        public static final String CLIENT_NAME = "paymentTransfer";
 
         public static final String X_TIME_ZONE = "X-Time-Zone";
     }

@@ -1,13 +1,5 @@
 feign:
-  client:
-    config:
-      default:
-        requestInterceptors:
-          com.fabrick.banking.feign.config.FeignConfig
-
-api:
-  feign:
-    base-url: https://sandbox.platfr.io
-    credentials:
-      Auth-Schema: S2S
-      Api-Key: FXOVVXXHVCPVPBZXIJOBGUGSKHDNFRRQJP
+  base-url: https://sandbox.platfr.io
+  credentials:
+    Auth-Schema: S2S
+    Api-Key: FXOVVXXHVCPVPBZXIJOBGUGSKHDNFRRQJP

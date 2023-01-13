@@ -1,0 +1,9 @@
+{
+  "status": "OK",
+  "payload": {
+    "date": "2023-01-12",
+    "balance": 6.87,
+    "availableBalance": 6.87,
+    "currency": "EUR"
+  }
+}

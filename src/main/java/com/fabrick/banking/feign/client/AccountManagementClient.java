@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @FeignClient(
         value = APIFeignConstants.AccountManagement.CLIENT_NAME,
-        url = "${api.feign.base-url}",
+        url = "${feign.base-url}",
         configuration = {FeignConfig.class, AccountManagementClientConfig.class}
 )
 public interface AccountManagementClient {

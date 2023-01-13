@@ -10,7 +10,8 @@ import com.fabrick.banking.exception.GenericException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.validation.BindException;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -36,26 +37,8 @@ public class AdviceController {
         return buildResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR, ex);
     }
 
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<ErrorReturnResponseDTO> handleException(MethodArgumentNotValidException ex){
-        List<ErrorResponseDTO> errors = ex.getBindingResult()
-                .getFieldErrors()
-                .stream()
-                .map(err -> ErrorResponseDTO.builder()
-                        .code(ErrorsEnum.INVALID_OR_MISSING_FIELD.name())
-                        .description(err.getDefaultMessage())
-                        .params(err.getField())
-                        .build())
-                .toList();
-
-        ErrorReturnResponseDTO errorResponse = new ErrorReturnResponseDTO();
-        errorResponse.setStatus(ErrorConstant.KO);
-        errorResponse.setErrors(errors);
-
-        return handleException(new BadRequestException(errorResponse));
-    }
-
-    @ExceptionHandler(HttpMessageNotReadableException.class)
+    //TODO remove
+    /*@ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<ErrorReturnResponseDTO> handleException(HttpMessageNotReadableException ex){
         BadRequestException badRequestException = new BadRequestException(
                 ErrorReturnResponseDTO.builder()
@@ -70,19 +53,46 @@ public class AdviceController {
                         .build()
         );
         return handleException(badRequestException);
+    }*/
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<ErrorReturnResponseDTO> handleException(MethodArgumentNotValidException ex){
+        return handleException(new BadRequestException(handleBindingAndMethodArgumentNotValidException(ex.getBindingResult())));
     }
+    @ExceptionHandler(BindException.class)
+    public ResponseEntity<ErrorReturnResponseDTO> handleException(BindException ex){
+        return handleException(new BadRequestException(handleBindingAndMethodArgumentNotValidException(ex.getBindingResult())));
+    }
+    private ErrorReturnResponseDTO handleBindingAndMethodArgumentNotValidException(BindingResult bindingResult){
+        List<ErrorResponseDTO> errors = bindingResult
+                .getFieldErrors()
+                .stream()
+                .map(err -> ErrorResponseDTO.builder()
+                        .code(ErrorsEnum.INVALID_OR_MISSING_FIELD.name())
+                        .description(err.getDefaultMessage())
+                        .params(err.getField())
+                        .build())
+                .toList();
+
+        ErrorReturnResponseDTO errorResponse = new ErrorReturnResponseDTO();
+        errorResponse.setStatus(ErrorConstant.KO);
+        errorResponse.setErrors(errors);
+
+        return errorResponse;
+    }
+
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorReturnResponseDTO> handleException(Exception ex){
         return handleException(new GenericException(buildExceptionErrorResponse()));
     }
 
     private <T extends GenericException> ResponseEntity<ErrorReturnResponseDTO> buildResponseEntity(HttpStatus status, T ex){
-        return ResponseEntity.status(status).body(
-                ErrorReturnResponseDTO.builder()
-                        .status(ex.getErrorResponse().getStatus())
-                        .errors(ex.getErrorResponse().getErrors())
-                        .build()
-        );
+        ErrorReturnResponseDTO errorResponse = ErrorReturnResponseDTO.builder()
+                .status(ex.getErrorResponse().getStatus())
+                .errors(ex.getErrorResponse().getErrors())
+                .build();
+
+        return new ResponseEntity<>(errorResponse, status);
     }
     private ErrorReturnResponseDTO buildExceptionErrorResponse(){
         return ErrorReturnResponseDTO

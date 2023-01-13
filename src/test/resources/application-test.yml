@@ -1,0 +1,3 @@
+feign:
+  service:
+    url: https://sandbox.platfr.io

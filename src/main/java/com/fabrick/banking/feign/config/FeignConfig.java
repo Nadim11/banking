@@ -10,10 +10,10 @@ import static com.fabrick.banking.feign.constant.APIFeignConstants.AUTH_SCHEMA;
 
 public class FeignConfig {
 
-    @Value("${api.feign.credentials.Auth-Schema}")
+    @Value("${feign.credentials.Auth-Schema}")
     private String authSchema;
 
-    @Value("${api.feign.credentials.Api-Key}")
+    @Value("${feign.credentials.Api-Key}")
     private String apiKey;
 
     @Bean

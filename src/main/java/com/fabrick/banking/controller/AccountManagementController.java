@@ -26,7 +26,7 @@ public class AccountManagementController {
     @GetMapping("/{accountId}/transactions")
     public ResponseEntity<AccountTransactionResponse> getAccountTransactions(
             @PathVariable(name = "accountId") String accountId,
-            @RequestBody @Valid AccountTransactionRequest request){
+            @Valid final AccountTransactionRequest request){
 
         return ResponseEntity
                 .ok()

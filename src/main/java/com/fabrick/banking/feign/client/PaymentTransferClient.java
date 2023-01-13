@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.RequestHeader;
 
 @FeignClient(
         value = APIFeignConstants.PaymentsMoneyTransfer.CLIENT_NAME,
-        url = "${api.feign.base-url}",
+        url = "${feign.base-url}",
         configuration = {FeignConfig.class, PaymentClientConfig.class}
 )
-public interface PaymentClient {
+public interface PaymentTransferClient {
 
     @PostMapping(APIFeignConstants.PaymentsMoneyTransfer.CREATE_MONEY_TRANSFER)
     PaymentTransferClientResponse createPaymentTransfer(
