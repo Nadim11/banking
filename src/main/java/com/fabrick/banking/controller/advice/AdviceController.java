@@ -39,24 +39,6 @@ public class AdviceController {
         return buildResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR, ex);
     }
 
-    //TODO remove
-    /*@ExceptionHandler(HttpMessageNotReadableException.class)
-    public ResponseEntity<ErrorReturnResponseDTO> handleException(HttpMessageNotReadableException ex){
-        BadRequestException badRequestException = new BadRequestException(
-                ErrorReturnResponseDTO.builder()
-                        .status(ErrorConstant.KO)
-                        .errors(List.of(
-                                ErrorResponseDTO
-                                        .builder()
-                                        .code(ErrorsEnum.INVALID_OR_MISSING_FIELD.name())
-                                        .description(ex.getMessage())
-                                        .build()
-                        ))
-                        .build()
-        );
-        return handleException(badRequestException);
-    }*/
-
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ErrorReturnResponseDTO> handleException(MethodArgumentNotValidException ex){
         return handleException(new BadRequestException(handleBindingAndMethodArgumentNotValidException(ex.getBindingResult())));

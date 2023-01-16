@@ -21,6 +21,7 @@ import java.sql.Date;
 @ValidPaymentTransfer
 public class PaymentTransferRequest implements Request {
 
+    @NotNull(message = ErrorConstant.NOT_NULL)
     @Valid
     private CreditorDTO     creditor;
     private Date            executionDate;
@@ -42,5 +43,6 @@ public class PaymentTransferRequest implements Request {
 
     public static class PaymentTransferRequestBuilder{
         private String      feeType = FeeType.SHA.name();
+        private Boolean     isInstant = false;
     }
 }

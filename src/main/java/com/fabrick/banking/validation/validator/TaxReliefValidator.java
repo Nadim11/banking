@@ -18,10 +18,10 @@ public class TaxReliefValidator implements ConstraintValidator<ValidTaxRelief, T
 
         if(taxReliefDTO.getBeneficiaryType().equals(BeneficiaryType.NATURAL_PERSON.name())){
             NaturalPersonBeneficiaryValidator naturalPersonBeneficiaryValidator = new NaturalPersonBeneficiaryValidator();
-            isValid = naturalPersonBeneficiaryValidator.isValid(taxReliefDTO.getNaturalPersonBeneficiary(), constraintValidatorContext);
+            isValid = taxReliefDTO.getNaturalPersonBeneficiary() != null && naturalPersonBeneficiaryValidator.isValid(taxReliefDTO.getNaturalPersonBeneficiary(), constraintValidatorContext);
         }else if(taxReliefDTO.getBeneficiaryType().equals(BeneficiaryType.LEGAL_PERSON.name())){
             LegalPersonBeneficiaryValidator legalPersonBeneficiaryValidator = new LegalPersonBeneficiaryValidator();
-            isValid = legalPersonBeneficiaryValidator.isValid(taxReliefDTO.getLegalPersonBeneficiary(), constraintValidatorContext);
+            isValid = taxReliefDTO.getLegalPersonBeneficiary() != null && legalPersonBeneficiaryValidator.isValid(taxReliefDTO.getLegalPersonBeneficiary(), constraintValidatorContext);
         }
 
         return isValid;

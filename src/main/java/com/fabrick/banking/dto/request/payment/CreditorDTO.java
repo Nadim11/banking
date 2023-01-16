@@ -16,6 +16,7 @@ public class CreditorDTO {
     @NotNull(message = ErrorConstant.NOT_NULL)
     @Size(max = 70)
     private String      name;
+    @NotNull(message = ErrorConstant.NOT_NULL)
     @Valid
     private AccountDTO  account;
     @Valid
