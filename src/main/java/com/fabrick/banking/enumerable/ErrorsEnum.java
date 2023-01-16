@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 public enum ErrorsEnum {
 
     INVALID_OR_MISSING_FIELD("Invalid or missing field"),
+    MISSING_HEADER("Missing Header"),
     INTERNAL_SERVER_ERROR("Something went wrong");
 
     private String description;
