@@ -1,4 +1,4 @@
-package com.fabrick.banking.payment;
+package com.fabrick.banking.validator.payment;
 
 import com.fabrick.banking.dto.request.payment.PaymentTransferRequest;
 import com.fabrick.banking.util.ResourceUtil;
