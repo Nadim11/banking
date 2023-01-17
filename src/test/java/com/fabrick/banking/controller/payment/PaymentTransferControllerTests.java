@@ -13,14 +13,11 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
+import static com.fabrick.banking.constant.APIConstant.PaymentMoneyTransfer.BASE_URL;
+import static com.fabrick.banking.constant.APIConstant.PaymentMoneyTransfer.MONEY_TRANSFER;
 import static org.mockito.Mockito.when;
-
-import static com.fabrick.banking.constant.APIConstant.PaymentMoneyTransfer.*;
-import static org.springframework.mock.http.server.reactive.MockServerHttpRequest.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(PaymentTransferController.class)

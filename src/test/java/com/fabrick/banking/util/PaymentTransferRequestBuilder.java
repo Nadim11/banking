@@ -1,7 +1,6 @@
 package com.fabrick.banking.util;
 
 import com.fabrick.banking.dto.request.payment.PaymentTransferRequest;
-import com.fabrick.banking.util.ResourceUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
