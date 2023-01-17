@@ -9,6 +9,7 @@ import feign.Response;
 import feign.Util;
 import feign.codec.ErrorDecoder;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 
 import java.io.IOException;
 
@@ -20,9 +21,9 @@ public class AccountManagementErrorDecoder implements ErrorDecoder {
     public Exception decode(String s, Response response) {
 
         try{
-            if(response.status() == 403){
+            if(response.status() == HttpStatus.FORBIDDEN.value()){
                 return new ForbiddenException(buildErrorResponse(response));
-            }else if(response.status() == 400){
+            }else if(response.status() == HttpStatus.BAD_REQUEST.value()){
                 return new BadRequestException(buildErrorResponse(response));
             }else{
                 return new GenericException(buildErrorResponse(response));
