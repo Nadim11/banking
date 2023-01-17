@@ -1,9 +1,9 @@
 package com.fabrick.banking.dto.request.payment;
 
 import com.fabrick.banking.constant.ErrorConstant;
-import com.fabrick.banking.validation.annotation.ValidBeneficiaryType;
-import com.fabrick.banking.validation.annotation.ValidTaxRelief;
-import com.fabrick.banking.validation.annotation.ValidTaxReliefType;
+import com.fabrick.banking.validation.payment.annotation.ValidBeneficiaryType;
+import com.fabrick.banking.validation.payment.annotation.ValidTaxRelief;
+import com.fabrick.banking.validation.payment.annotation.ValidTaxReliefType;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 

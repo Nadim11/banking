@@ -1,6 +1,6 @@
-package com.fabrick.banking.validation.annotation;
+package com.fabrick.banking.validation.payment.annotation;
 
-import com.fabrick.banking.validation.validator.PaymentTransferValidator;
+import com.fabrick.banking.validation.payment.validator.AccountValidator;
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
 
@@ -14,11 +14,11 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 @Target({TYPE, ANNOTATION_TYPE})
 @Retention(RUNTIME)
-@Constraint(validatedBy = PaymentTransferValidator.class)
+@Constraint(validatedBy = AccountValidator.class)
 @Documented
-public @interface ValidPaymentTransfer {
+public @interface ValidAccount {
 
-    String message() default "Execution Date is required";
+    String message() default "Invalid Creditor Account";
 
     Class<?>[] groups() default {};
 
@@ -28,6 +28,6 @@ public @interface ValidPaymentTransfer {
     @Retention(RUNTIME)
     @Documented
     @interface List {
-        ValidPaymentTransfer[] value();
+        ValidAccount[] value();
     }
 }

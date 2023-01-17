@@ -1,7 +1,7 @@
-package com.fabrick.banking.validation.validator;
+package com.fabrick.banking.validation.payment.validator;
 
 import com.fabrick.banking.enumerable.FeeType;
-import com.fabrick.banking.validation.annotation.ValidFeeType;
+import com.fabrick.banking.validation.payment.annotation.ValidFeeType;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 

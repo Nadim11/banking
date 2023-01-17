@@ -1,6 +1,6 @@
-package com.fabrick.banking.validation.annotation;
+package com.fabrick.banking.validation.payment.annotation;
 
-import com.fabrick.banking.validation.validator.NaturalPersonBeneficiaryValidator;
+import com.fabrick.banking.validation.payment.validator.LegalPersonBeneficiaryValidator;
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
 
@@ -12,12 +12,12 @@ import java.lang.annotation.Target;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 @Retention(RUNTIME)
-@Constraint(validatedBy = NaturalPersonBeneficiaryValidator.class)
+@Constraint(validatedBy = LegalPersonBeneficiaryValidator.class)
 @Documented
 @Target(ElementType.FIELD)
-public @interface ValidNaturalPersonBeneficiary {
+public @interface ValidLegalPersonBeneficiary {
 
-    String message() default "Invalid Natural Person Beneficiary";
+    String message() default "Invalid Legal Person Beneficiary";
 
     Class<?>[] groups() default {};
 

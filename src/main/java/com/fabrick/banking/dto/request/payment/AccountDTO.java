@@ -1,7 +1,7 @@
 package com.fabrick.banking.dto.request.payment;
 
 import com.fabrick.banking.constant.ErrorConstant;
-import com.fabrick.banking.validation.annotation.ValidAccount;
+import com.fabrick.banking.validation.payment.annotation.ValidAccount;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 

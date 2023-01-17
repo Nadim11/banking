@@ -1,6 +1,6 @@
-package com.fabrick.banking.validation.annotation;
+package com.fabrick.banking.validation.payment.annotation;
 
-import com.fabrick.banking.validation.validator.TaxReliefValidator;
+import com.fabrick.banking.validation.payment.validator.PaymentTransferValidator;
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
 
@@ -14,11 +14,11 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 @Target({TYPE, ANNOTATION_TYPE})
 @Retention(RUNTIME)
-@Constraint(validatedBy = TaxReliefValidator.class)
+@Constraint(validatedBy = PaymentTransferValidator.class)
 @Documented
-public @interface ValidTaxRelief {
+public @interface ValidPaymentTransfer {
 
-    String message() default "Invalid Tax Relief Input";
+    String message() default "Execution Date is required";
 
     Class<?>[] groups() default {};
 
@@ -28,6 +28,6 @@ public @interface ValidTaxRelief {
     @Retention(RUNTIME)
     @Documented
     @interface List {
-        ValidTaxRelief[] value();
+        ValidPaymentTransfer[] value();
     }
 }

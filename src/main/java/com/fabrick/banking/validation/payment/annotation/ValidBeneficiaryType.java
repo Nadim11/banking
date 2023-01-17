@@ -1,6 +1,6 @@
-package com.fabrick.banking.validation.annotation;
+package com.fabrick.banking.validation.payment.annotation;
 
-import com.fabrick.banking.validation.validator.FeeTypeValidator;
+import com.fabrick.banking.validation.payment.validator.BeneficiaryTypeValidator;
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
 
@@ -12,14 +12,15 @@ import java.lang.annotation.Target;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 @Retention(RUNTIME)
-@Constraint(validatedBy = FeeTypeValidator.class)
+@Constraint(validatedBy = BeneficiaryTypeValidator.class)
 @Documented
 @Target(ElementType.FIELD)
-public @interface ValidFeeType {
+public @interface ValidBeneficiaryType {
 
-    String message() default "Invalid Fee Type";
+    String message() default "Invalid Beneficiary Type";
 
     Class<?>[] groups() default {};
 
     Class<? extends Payload>[] payload() default {};
+
 }

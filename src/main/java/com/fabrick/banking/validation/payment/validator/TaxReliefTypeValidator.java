@@ -1,7 +1,7 @@
-package com.fabrick.banking.validation.validator;
+package com.fabrick.banking.validation.payment.validator;
 
 import com.fabrick.banking.enumerable.TaxReliefType;
-import com.fabrick.banking.validation.annotation.ValidTaxReliefType;
+import com.fabrick.banking.validation.payment.annotation.ValidTaxReliefType;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 

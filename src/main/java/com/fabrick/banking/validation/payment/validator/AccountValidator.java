@@ -1,7 +1,7 @@
-package com.fabrick.banking.validation.validator;
+package com.fabrick.banking.validation.payment.validator;
 
 import com.fabrick.banking.dto.request.payment.AccountDTO;
-import com.fabrick.banking.validation.annotation.ValidAccount;
+import com.fabrick.banking.validation.payment.annotation.ValidAccount;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 

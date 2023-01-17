@@ -1,6 +1,7 @@
 package com.fabrick.banking.validator.payment;
 
 import com.fabrick.banking.dto.request.payment.PaymentTransferRequest;
+import com.fabrick.banking.util.PaymentTransferRequestBuilder;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validation;
 import jakarta.validation.Validator;
@@ -28,7 +29,6 @@ class PaymentMoneyTransferRequestValidatorTests {
     private ValidatorFactory validatorFactory;
     private Validator validator;
 
-    private final PaymentTransferRequestBuilder builder = new PaymentTransferRequestBuilder();
     @BeforeEach
     public void createValidator() {
         validatorFactory = Validation.buildDefaultValidatorFactory();
@@ -37,7 +37,7 @@ class PaymentMoneyTransferRequestValidatorTests {
 
     @Test
     void test_payment_money_transfer_valid_request() throws IOException {
-        PaymentTransferRequest request = builder.getValidRequest();
+        PaymentTransferRequest request = PaymentTransferRequestBuilder.getValidRequest();
 
         Set<ConstraintViolation<PaymentTransferRequest>> violations = validator.validate(request);
 
@@ -47,7 +47,7 @@ class PaymentMoneyTransferRequestValidatorTests {
 
     @Test
     void test_payment_money_transfer_invalid_creditor() throws IOException {
-        PaymentTransferRequest request = builder.getRequestWithInvalidCreditor();
+        PaymentTransferRequest request = PaymentTransferRequestBuilder.getRequestWithInvalidCreditor();
 
         Set<ConstraintViolation<PaymentTransferRequest>> violations = validator.validate(request);
 
@@ -57,7 +57,7 @@ class PaymentMoneyTransferRequestValidatorTests {
 
     @Test
     void test_payment_money_transfer_invalid_creditor_name_length() throws IOException {
-        PaymentTransferRequest request = builder.getValidRequest();
+        PaymentTransferRequest request = PaymentTransferRequestBuilder.getValidRequest();
 
         request.getCreditor().setName(RANDOM_LONG_STRING_80_CHARS);
 
@@ -69,7 +69,7 @@ class PaymentMoneyTransferRequestValidatorTests {
 
     @Test
     void test_payment_money_transfer_invalid_creditor_address_address_length() throws IOException {
-        PaymentTransferRequest request = builder.getValidRequest();
+        PaymentTransferRequest request = PaymentTransferRequestBuilder.getValidRequest();
 
         request.getCreditor().getAddress().setAddress(RANDOM_LONG_STRING_80_CHARS);
 
@@ -81,7 +81,7 @@ class PaymentMoneyTransferRequestValidatorTests {
 
     @Test
     void test_payment_money_transfer_invalid_description_length() throws IOException {
-        PaymentTransferRequest request = builder.getValidRequest();
+        PaymentTransferRequest request = PaymentTransferRequestBuilder.getValidRequest();
 
         request.setDescription(RANDOM_LONG_STRING_80_CHARS + RANDOM_LONG_STRING_80_CHARS);
 
@@ -93,7 +93,7 @@ class PaymentMoneyTransferRequestValidatorTests {
 
     @Test
     void test_payment_money_transfer_invalid_executionDate_and_description_and_amount_currency() throws IOException {
-        PaymentTransferRequest request = builder.getRequestWithInvalidExecutionDateAndDescriptionAndAmountAndCurrency();
+        PaymentTransferRequest request = PaymentTransferRequestBuilder.getRequestWithInvalidExecutionDateAndDescriptionAndAmountAndCurrency();
 
         Set<ConstraintViolation<PaymentTransferRequest>> violations = validator.validate(request);
 
@@ -103,7 +103,7 @@ class PaymentMoneyTransferRequestValidatorTests {
 
     @Test
     void test_invalid_taxRelief_BeneficiaryType_NATURAL_PERSON_BUT_NATURAL_PERSON_BENEFICIARY_IS_NULL() throws IOException {
-        PaymentTransferRequest request = builder.getValidRequest();
+        PaymentTransferRequest request = PaymentTransferRequestBuilder.getValidRequest();
 
         request.getTaxRelief().setNaturalPersonBeneficiary(null);
 
@@ -115,7 +115,7 @@ class PaymentMoneyTransferRequestValidatorTests {
 
     @Test
     void test_invalid_taxRelief_BeneficiaryType_LEGAL_PERSON_BUT_LEGAL_PERSON_BENEFICIARY_IS_NULL() throws IOException {
-        PaymentTransferRequest request = builder.getValidRequest();
+        PaymentTransferRequest request = PaymentTransferRequestBuilder.getValidRequest();
 
         request.getTaxRelief().setBeneficiaryType("LEGAL_PERSON");
         request.getTaxRelief().setLegalPersonBeneficiary(null);

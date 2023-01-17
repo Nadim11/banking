@@ -1,6 +1,6 @@
-package com.fabrick.banking.validation.annotation;
+package com.fabrick.banking.validation.payment.annotation;
 
-import com.fabrick.banking.validation.validator.TaxReliefTypeValidator;
+import com.fabrick.banking.validation.payment.validator.NaturalPersonBeneficiaryValidator;
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
 
@@ -12,12 +12,12 @@ import java.lang.annotation.Target;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 @Retention(RUNTIME)
-@Constraint(validatedBy = TaxReliefTypeValidator.class)
+@Constraint(validatedBy = NaturalPersonBeneficiaryValidator.class)
 @Documented
 @Target(ElementType.FIELD)
-public @interface ValidTaxReliefType {
+public @interface ValidNaturalPersonBeneficiary {
 
-    String message() default "Invalid Tax Relief Id";
+    String message() default "Invalid Natural Person Beneficiary";
 
     Class<?>[] groups() default {};
 

@@ -1,9 +1,7 @@
-package com.fabrick.banking.validation.validator;
+package com.fabrick.banking.validation.payment.validator;
 
 import com.fabrick.banking.dto.request.payment.LegalPersonBeneficiaryDTO;
-import com.fabrick.banking.dto.request.payment.NaturalPersonBeneficiaryDTO;
-import com.fabrick.banking.validation.annotation.ValidLegalPersonBeneficiary;
-import com.fabrick.banking.validation.annotation.ValidNaturalPersonBeneficiary;
+import com.fabrick.banking.validation.payment.annotation.ValidLegalPersonBeneficiary;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 
