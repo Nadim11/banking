@@ -1,5 +1,6 @@
 package com.fabrick.banking.dto.response.payment;
 
+import com.fabrick.banking.dto.DTO;
 import lombok.*;
 
 @NoArgsConstructor
@@ -7,7 +8,7 @@ import lombok.*;
 @Builder
 @Getter
 @Setter
-public class AddressResponseDTO {
+public class AddressResponseDTO implements DTO {
 
     private String address;
     private String city;

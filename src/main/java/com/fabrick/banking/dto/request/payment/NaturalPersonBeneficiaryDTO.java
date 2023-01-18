@@ -1,5 +1,6 @@
 package com.fabrick.banking.dto.request.payment;
 
+import com.fabrick.banking.dto.DTO;
 import lombok.*;
 
 @NoArgsConstructor
@@ -7,7 +8,7 @@ import lombok.*;
 @Builder
 @Getter
 @Setter
-public class NaturalPersonBeneficiaryDTO {
+public class NaturalPersonBeneficiaryDTO implements DTO {
 
     private String fiscalCode1;
     private String fiscalCode2;

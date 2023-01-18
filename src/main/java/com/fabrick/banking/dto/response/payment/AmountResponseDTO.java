@@ -1,6 +1,7 @@
 package com.fabrick.banking.dto.response.payment;
 
 
+import com.fabrick.banking.dto.DTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,7 +16,7 @@ import java.sql.Date;
 @SuperBuilder
 @Getter
 @Setter
-public class AmountResponseDTO {
+public class AmountResponseDTO implements DTO {
 
     private BigDecimal  debtorAmount;
     private String      debtorCurrency;

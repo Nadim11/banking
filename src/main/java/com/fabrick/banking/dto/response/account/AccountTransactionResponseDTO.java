@@ -1,5 +1,6 @@
 package com.fabrick.banking.dto.response.account;
 
+import com.fabrick.banking.dto.DTO;
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -10,7 +11,7 @@ import java.sql.Date;
 @Builder
 @Getter
 @Setter
-public class AccountTransactionResponseDTO {
+public class AccountTransactionResponseDTO implements DTO {
 
     private String                              transactionId;
     private String                              operationId;

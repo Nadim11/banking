@@ -1,5 +1,6 @@
 package com.fabrick.banking.dto.response.payment;
 
+import com.fabrick.banking.dto.DTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,7 +14,7 @@ import java.math.BigDecimal;
 @SuperBuilder
 @Getter
 @Setter
-public class FeeResponseDTO {
+public class FeeResponseDTO implements DTO {
 
     private String      feeCode;
     private String      description;

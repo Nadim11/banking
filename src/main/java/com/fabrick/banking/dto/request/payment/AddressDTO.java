@@ -1,5 +1,6 @@
 package com.fabrick.banking.dto.request.payment;
 
+import com.fabrick.banking.dto.DTO;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
@@ -8,7 +9,7 @@ import lombok.*;
 @Builder
 @Getter
 @Setter
-public class AddressDTO {
+public class AddressDTO implements DTO {
 
     @Size(max = 40)
     private String address;
