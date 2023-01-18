@@ -1,2 +1,3 @@
 feign:
-  base-url: http://localhost:7070
+  port: 7070
+  base-url: http://localhost:${feign.port}
