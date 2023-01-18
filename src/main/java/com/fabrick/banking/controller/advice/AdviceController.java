@@ -12,6 +12,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.MissingRequestHeaderException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -48,25 +50,9 @@ public class AdviceController {
         return handleException(new BadRequestException(handleBindingAndMethodArgumentNotValidException(ex.getBindingResult())));
     }
     private ErrorReturnResponseDTO handleBindingAndMethodArgumentNotValidException(BindingResult bindingResult){
-        List<ErrorResponseDTO> fieldErrors = bindingResult
-                .getFieldErrors()
-                .stream()
-                .map(err -> ErrorResponseDTO.builder()
-                        .code(ErrorsEnum.INVALID_OR_MISSING_FIELD.name())
-                        .description(err.getDefaultMessage())
-                        .params(err.getField())
-                        .build())
-                .toList();
+        List<ErrorResponseDTO> fieldErrors = getFieldErrors(bindingResult.getFieldErrors());
 
-        List<ErrorResponseDTO> globalErrors = bindingResult
-                .getGlobalErrors()
-                .stream()
-                .map(err -> ErrorResponseDTO.builder()
-                        .code(ErrorsEnum.INVALID_OR_MISSING_FIELD.name())
-                        .description(err.getDefaultMessage())
-                        .build()
-                )
-                .toList();
+        List<ErrorResponseDTO> globalErrors = getGlobalErrors(bindingResult.getGlobalErrors());
 
         List<ErrorResponseDTO> errors = new ArrayList<>();
         errors.addAll(fieldErrors);
@@ -77,6 +63,27 @@ public class AdviceController {
         errorResponse.setErrors(errors);
 
         return errorResponse;
+    }
+
+    private List<ErrorResponseDTO> getFieldErrors(List<FieldError> fieldErrors){
+        return fieldErrors
+                .stream()
+                .map(err -> ErrorResponseDTO.builder()
+                        .code(ErrorsEnum.INVALID_OR_MISSING_FIELD.name())
+                        .description(err.getDefaultMessage())
+                        .params(err.getField())
+                        .build())
+                .toList();
+    }
+
+    private List<ErrorResponseDTO> getGlobalErrors(List<ObjectError> globalErrors){
+        return globalErrors
+                .stream()
+                .map(err -> ErrorResponseDTO.builder()
+                        .code(ErrorsEnum.INVALID_OR_MISSING_FIELD.name())
+                        .description(err.getDefaultMessage())
+                        .build())
+                .toList();
     }
 
     @ExceptionHandler(MissingRequestHeaderException.class)
@@ -96,15 +103,6 @@ public class AdviceController {
     public ResponseEntity<ErrorReturnResponseDTO> handleException(Exception ex){
         return handleException(new GenericException(buildExceptionErrorResponse()));
     }
-
-    private <T extends GenericException> ResponseEntity<ErrorReturnResponseDTO> buildResponseEntity(HttpStatus status, T ex){
-        ErrorReturnResponseDTO errorResponse = ErrorReturnResponseDTO.builder()
-                .status(ex.getErrorResponse().getStatus())
-                .errors(ex.getErrorResponse().getErrors())
-                .build();
-
-        return new ResponseEntity<>(errorResponse, status);
-    }
     private ErrorReturnResponseDTO buildExceptionErrorResponse(){
         return ErrorReturnResponseDTO
                 .builder()
@@ -118,5 +116,14 @@ public class AdviceController {
                         )
                 )
                 .build();
+    }
+
+    private <T extends GenericException> ResponseEntity<ErrorReturnResponseDTO> buildResponseEntity(HttpStatus status, T ex){
+        ErrorReturnResponseDTO errorResponse = ErrorReturnResponseDTO.builder()
+                .status(ex.getErrorResponse().getStatus())
+                .errors(ex.getErrorResponse().getErrors())
+                .build();
+
+        return new ResponseEntity<>(errorResponse, status);
     }
 }
