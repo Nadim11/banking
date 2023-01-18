@@ -1,0 +1,137 @@
+{
+  "status": "OK",
+  "payload": {
+    "list": [
+      {
+        "transactionId": "1525686714002",
+        "operationId": "20000056301225",
+        "accountingDate": "2020-03-25",
+        "valueDate": "2020-03-23",
+        "type": {
+          "enumeration": "GBS_TRANSACTION_TYPE",
+          "value": "GBS_ACCOUNT_TRANSACTION_TYPE_0039"
+        },
+        "amount": -13.09,
+        "currency": "EUR",
+        "description": "ID INT. LIQUIDAZIONI PREC"
+      },
+      {
+        "transactionId": "1525261938002",
+        "operationId": "20000055640301",
+        "accountingDate": "2020-03-23",
+        "valueDate": "2020-03-23",
+        "type": {
+          "enumeration": "GBS_TRANSACTION_TYPE",
+          "value": "GBS_ACCOUNT_TRANSACTION_TYPE_0010"
+        },
+        "amount": 257.00,
+        "currency": "EUR",
+        "description": "BD LUCA TERRIBILE        DA ITTPIT2M              URI NOTPROVIDED       COPERTURA SPESE CARTA AZIENDALE"
+      },
+      {
+        "transactionId": "1505868734001",
+        "operationId": "20000028020993",
+        "accountingDate": "2020-02-10",
+        "valueDate": "2020-02-09",
+        "type": {
+          "enumeration": "GBS_TRANSACTION_TYPE",
+          "value": "GBS_ACCOUNT_TRANSACTION_TYPE_0010"
+        },
+        "amount": 360.00,
+        "currency": "EUR",
+        "description": "BD LUCA TERRIBILE        DA 03268.44430         DATA ORDINE 09022020 COPERTURA CARTA CREDITO"
+      },
+      {
+        "transactionId": "1497084676002",
+        "operationId": "20000014772122",
+        "accountingDate": "2020-01-23",
+        "valueDate": "2020-01-23",
+        "type": {
+          "enumeration": "GBS_TRANSACTION_TYPE",
+          "value": "GBS_ACCOUNT_TRANSACTION_TYPE_0034"
+        },
+        "amount": -0.01,
+        "currency": "EUR",
+        "description": "GC LUCA TERRIBILE         DATA ORDINE 23012020 TEST 1"
+      },
+      {
+        "transactionId": "1490501374001",
+        "operationId": "20000006023654",
+        "accountingDate": "2020-01-09",
+        "valueDate": "2020-01-09",
+        "type": {
+          "enumeration": "GBS_TRANSACTION_TYPE",
+          "value": "GBS_ACCOUNT_TRANSACTION_TYPE_0010"
+        },
+        "amount": 570.00,
+        "currency": "EUR",
+        "description": "BD LUCA TERRIBILE        DA 03268.49130         DATA ORDINE 09012020 COPERTURA SPESE"
+      },
+      {
+        "transactionId": "1476867193001",
+        "operationId": "19000214902246",
+        "accountingDate": "2019-12-13",
+        "valueDate": "2019-12-13",
+        "type": {
+          "enumeration": "GBS_TRANSACTION_TYPE",
+          "value": "GBS_ACCOUNT_TRANSACTION_TYPE_0034"
+        },
+        "amount": 330.00,
+        "currency": "EUR",
+        "description": "GC LUCA TERRIBILE        DA 03268.22300         DATA ORDINE 13122019 COPERTURA SPESE"
+      },
+      {
+        "transactionId": "1476867199001",
+        "operationId": "19000214902305",
+        "accountingDate": "2019-12-13",
+        "valueDate": "2019-12-13",
+        "type": {
+          "enumeration": "GBS_TRANSACTION_TYPE",
+          "value": "GBS_ACCOUNT_TRANSACTION_TYPE_0034"
+        },
+        "amount": 31.00,
+        "currency": "EUR",
+        "description": "GC LUCA TERRIBILE        DA 03268.22300         DATA ORDINE 13122019 VACANZA GENNAIO"
+      },
+      {
+        "transactionId": "1460159524001",
+        "operationId": "19000191134336",
+        "accountingDate": "2019-11-11",
+        "valueDate": "2019-11-09",
+        "type": {
+          "enumeration": "GBS_TRANSACTION_TYPE",
+          "value": "GBS_ACCOUNT_TRANSACTION_TYPE_0010"
+        },
+        "amount": 854.00,
+        "currency": "EUR",
+        "description": "BD LUCA TERRIBILE        DA 03268.49130         DATA ORDINE 09112019 COPERTURA VISA"
+      },
+      {
+        "transactionId": "1433790655001",
+        "operationId": "19000155036506",
+        "accountingDate": "2019-09-16",
+        "valueDate": "2019-09-16",
+        "type": {
+          "enumeration": "GBS_TRANSACTION_TYPE",
+          "value": "GBS_ACCOUNT_TRANSACTION_TYPE_0034"
+        },
+        "amount": 100.00,
+        "currency": "EUR",
+        "description": "GC LUCA TERRIBILE        DA 03268.22300         DATA ORDINE 16092019 TEST"
+      },
+      {
+        "transactionId": "1390057989001",
+        "operationId": "19000095363538",
+        "accountingDate": "2019-06-14",
+        "valueDate": "2019-06-14",
+        "type": {
+          "enumeration": "GBS_TRANSACTION_TYPE",
+          "value": "GBS_ACCOUNT_TRANSACTION_TYPE_0010"
+        },
+        "amount": 90.00,
+        "currency": "EUR",
+        "description": "BD LUCA TERRIBILE        DA 03268.44430         DATA ORDINE 14062019 RIMBORSO VISA"
+      }
+    ]
+  }
+}

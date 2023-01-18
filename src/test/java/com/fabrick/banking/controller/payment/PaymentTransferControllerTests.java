@@ -17,6 +17,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import static com.fabrick.banking.constant.APIConstant.PaymentMoneyTransfer.BASE_URL;
 import static com.fabrick.banking.constant.APIConstant.PaymentMoneyTransfer.MONEY_TRANSFER;
+import static com.fabrick.banking.constant.Constants.ACCOUNT_ID;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -37,7 +38,7 @@ class PaymentTransferControllerTests {
         PaymentTransferRequest paymentTransferRequest = PaymentTransferRequestBuilder.getValidRequest();
 
         this.mockMvc.perform( MockMvcRequestBuilders
-                        .post(BASE_URL + MONEY_TRANSFER, "14537780")
+                        .post(BASE_URL + MONEY_TRANSFER, ACCOUNT_ID)
                         .content(asJsonString(paymentTransferRequest))
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
@@ -50,7 +51,7 @@ class PaymentTransferControllerTests {
                 .thenReturn(new PaymentTransferResponse());
 
         this.mockMvc.perform( MockMvcRequestBuilders
-                        .post(BASE_URL + MONEY_TRANSFER, "14537780")
+                        .post(BASE_URL + MONEY_TRANSFER, ACCOUNT_ID)
                         .content(asJsonString(new PaymentTransferRequest()))
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))

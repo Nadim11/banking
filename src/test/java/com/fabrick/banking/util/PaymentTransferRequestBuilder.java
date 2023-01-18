@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class PaymentTransferRequestBuilder {
 
-    private static final String BASE_PATH = "/payment/money-transfer";
+    private static final String BASE_PATH = "/payment/money-transfer/request";
 
     private static final ObjectMapper mapper = new ObjectMapper();
 

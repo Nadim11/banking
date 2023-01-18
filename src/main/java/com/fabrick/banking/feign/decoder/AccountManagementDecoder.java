@@ -1,7 +1,7 @@
 package com.fabrick.banking.feign.decoder;
 
 import com.fabrick.banking.feign.enumerable.ResponseType;
-import com.fabrick.banking.feign.model.response.account.AccountBalanceBaseResponse;
+import com.fabrick.banking.feign.model.response.BaseClientResponse;
 import com.fabrick.banking.feign.model.response.account.AccountBalanceClientResponse;
 import com.fabrick.banking.feign.model.response.account.AccountTransactionClientResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -30,6 +30,6 @@ public class AccountManagementDecoder implements Decoder{
             return mapper.readValue(resp, AccountTransactionClientResponse.class);
         }
 
-        return AccountBalanceBaseResponse.builder().build();
+        return BaseClientResponse.builder().build();
     }
 }

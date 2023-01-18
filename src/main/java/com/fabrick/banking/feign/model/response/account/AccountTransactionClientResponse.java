@@ -1,5 +1,6 @@
 package com.fabrick.banking.feign.model.response.account;
 
+import com.fabrick.banking.feign.model.response.BaseClientResponse;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
@@ -8,7 +9,7 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @Getter
 @Setter
-public class AccountTransactionClientResponse extends AccountBalanceBaseResponse{
+public class AccountTransactionClientResponse extends BaseClientResponse {
 
     private AccountTransactionPayloadList payload;
 

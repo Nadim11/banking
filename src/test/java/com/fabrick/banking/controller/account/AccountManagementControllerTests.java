@@ -11,6 +11,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static com.fabrick.banking.constant.APIConstant.AccountManagement.*;
+import static com.fabrick.banking.constant.Constants.ACCOUNT_ID;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -31,7 +32,7 @@ class AccountManagementControllerTests {
         ).thenReturn(Mockito.any());
 
         this.mockMvc.perform(
-                get(BASE_URL + ACCOUNT_BALANCE, "14537780")
+                get(BASE_URL + ACCOUNT_BALANCE, ACCOUNT_ID)
         )
                 .andExpect(
                         status().isOk()
@@ -45,7 +46,7 @@ class AccountManagementControllerTests {
         ).thenReturn(new AccountTransactionResponse());
 
         this.mockMvc.perform(
-                        get(BASE_URL + ACCOUNT_TRANSACTIONS, "14537780")
+                        get(BASE_URL + ACCOUNT_TRANSACTIONS, ACCOUNT_ID)
                                 .queryParam("fromAccountingDate", "2019-01-01")
                                 .queryParam("toAccountingDate", "2020-01-01")
                 )
@@ -61,7 +62,7 @@ class AccountManagementControllerTests {
         ).thenReturn(new AccountTransactionResponse());
 
         this.mockMvc.perform(
-                        get(BASE_URL + ACCOUNT_TRANSACTIONS, "14537780")
+                        get(BASE_URL + ACCOUNT_TRANSACTIONS, ACCOUNT_ID)
                                 .queryParam("fromAccountingDate", "2019-01-01")
                                 .queryParam("toAccountingDate", "2020/01-01")
                 )
@@ -77,7 +78,7 @@ class AccountManagementControllerTests {
         ).thenReturn(new AccountTransactionResponse());
 
         this.mockMvc.perform(
-                        get(BASE_URL + ACCOUNT_TRANSACTIONS, "14537780")
+                        get(BASE_URL + ACCOUNT_TRANSACTIONS, ACCOUNT_ID)
                                 .queryParam("fromAccountingDate", "2019-01-01")
                 )
                 .andExpect(
