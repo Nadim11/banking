@@ -4,7 +4,7 @@ import com.fabrick.banking.constant.ErrorConstant;
 import com.fabrick.banking.dto.request.Request;
 import com.fabrick.banking.enumerable.FeeType;
 import com.fabrick.banking.validation.payment.annotation.ValidFeeType;
-import com.fabrick.banking.validation.payment.annotation.ValidPaymentTransfer;
+import com.fabrick.banking.validation.payment.annotation.ValidPaymentTransferExecutionDate;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -18,7 +18,7 @@ import java.sql.Date;
 @Builder
 @Getter
 @Setter
-@ValidPaymentTransfer
+@ValidPaymentTransferExecutionDate
 public class PaymentTransferRequest implements Request {
 
     @NotNull(message = ErrorConstant.NOT_NULL)

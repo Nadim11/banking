@@ -7,10 +7,6 @@ import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 
 public class TaxReliefValidator implements ConstraintValidator<ValidTaxRelief, TaxReliefDTO> {
-    @Override
-    public void initialize(ValidTaxRelief constraintAnnotation) {
-        ConstraintValidator.super.initialize(constraintAnnotation);
-    }
 
     @Override
     public boolean isValid(TaxReliefDTO taxReliefDTO, ConstraintValidatorContext constraintValidatorContext) {

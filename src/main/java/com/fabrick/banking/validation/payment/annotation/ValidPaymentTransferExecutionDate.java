@@ -1,6 +1,6 @@
 package com.fabrick.banking.validation.payment.annotation;
 
-import com.fabrick.banking.validation.payment.validator.PaymentTransferValidator;
+import com.fabrick.banking.validation.payment.validator.PaymentTransferExecutionDateValidator;
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
 
@@ -14,9 +14,9 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 @Target({TYPE, ANNOTATION_TYPE})
 @Retention(RUNTIME)
-@Constraint(validatedBy = PaymentTransferValidator.class)
+@Constraint(validatedBy = PaymentTransferExecutionDateValidator.class)
 @Documented
-public @interface ValidPaymentTransfer {
+public @interface ValidPaymentTransferExecutionDate {
 
     String message() default "Execution Date is required";
 
@@ -28,6 +28,6 @@ public @interface ValidPaymentTransfer {
     @Retention(RUNTIME)
     @Documented
     @interface List {
-        ValidPaymentTransfer[] value();
+        ValidPaymentTransferExecutionDate[] value();
     }
 }
