@@ -24,7 +24,7 @@ import static com.fabrick.banking.constant.Constants.ACCOUNT_ID;
 @DataJpaTest
 class AccountTransactionRepositoryTest {
 
-    private static final String PATH = "account/response/transactions.json";
+    private static final String                           PATH = "account/response/transactions.json";
     private final ObjectMapper                            mapper = new ObjectMapper();
     @Autowired
     private AccountTransactionRepository                  accountTransactionRepository;
