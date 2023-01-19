@@ -25,6 +25,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class AccountManagementServiceImpl implements AccountManagementService{
 
+    private static final String TRANSACTIONS_CACHE_NAME = "transactions";
     private final AccountManagementClient                   accountManagementClient;
     private final AccountBalanceResponseMapperImpl          accountBalanceResponseMapper;
     private final AccountTransactionRequestMapperImpl       accountTransactionRequestMapper;
@@ -40,7 +41,7 @@ public class AccountManagementServiceImpl implements AccountManagementService{
     }
 
     @Override
-    @Cacheable(value = "transactions", key = "#accountId") // for this use case default cache is used (ConcurrentHashMap)
+    @Cacheable(value = TRANSACTIONS_CACHE_NAME, key = "#accountId") // for this use case default cache is used (ConcurrentHashMap)
     public AccountTransactionResponse getAccountTransactions(String accountId, AccountTransactionRequest request) {
         AccountTransactionResponse response = accountTransactionResponseMapper.toDTO(accountManagementClient.getAccountTransactions(accountId, accountTransactionRequestMapper.fromDTO(request)));
 
