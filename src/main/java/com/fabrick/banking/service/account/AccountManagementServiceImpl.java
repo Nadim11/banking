@@ -40,7 +40,7 @@ public class AccountManagementServiceImpl implements AccountManagementService{
     }
 
     @Override
-    @Cacheable(value = "transactions", key = "#accountId")
+    @Cacheable(value = "transactions", key = "#accountId") // for this use case default cache is used (ConcurrentHashMap)
     public AccountTransactionResponse getAccountTransactions(String accountId, AccountTransactionRequest request) {
         AccountTransactionResponse response = accountTransactionResponseMapper.toDTO(accountManagementClient.getAccountTransactions(accountId, accountTransactionRequestMapper.fromDTO(request)));
 

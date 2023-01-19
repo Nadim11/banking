@@ -3,9 +3,9 @@ package com.fabrick.banking.dto;
 import java.io.Serializable;
 import java.util.List;
 
-public interface ListDTOMapper <R extends DTO, C extends Serializable> extends DTOMapper<R, C> {
+public interface ListDTOMapper <D extends DTO, S extends Serializable> extends DTOMapper<D, S> {
 
-    List<R> toDTOList(List<C> var1);
+    List<D> toDTOList(List<S> var1);
 
-    List<C> fromDTOList(List<R> var1);
+    List<S> fromDTOList(List<D> var1);
 }
