@@ -24,6 +24,7 @@ import static com.fabrick.banking.constant.Constants.ACCOUNT_ID;
 @DataJpaTest
 class AccountTransactionRepositoryTest {
 
+    private static final String PATH = "account/response/transactions.json";
     private final ObjectMapper                            mapper = new ObjectMapper();
     @Autowired
     private AccountTransactionRepository                  accountTransactionRepository;
@@ -35,7 +36,7 @@ class AccountTransactionRepositoryTest {
 
     @BeforeEach
     void setup() throws IOException {
-        File file = ResourceUtil.getFile("account/response/transactions.json");
+        File file = ResourceUtil.getFile(PATH);
         AccountTransactionResponse accountTransactionResponse = mapper.readValue(
                 file, AccountTransactionResponse.class);
 
