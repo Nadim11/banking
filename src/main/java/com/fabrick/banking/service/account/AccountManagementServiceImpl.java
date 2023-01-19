@@ -44,7 +44,7 @@ public class AccountManagementServiceImpl implements AccountManagementService{
     public AccountTransactionResponse getAccountTransactions(String accountId, AccountTransactionRequest request) {
         AccountTransactionResponse response = accountTransactionResponseMapper.toDTO(accountManagementClient.getAccountTransactions(accountId, accountTransactionRequestMapper.fromDTO(request)));
 
-        Optional<AccountTransaction> account = accountTransactionRepository.findById(Integer.valueOf(accountId));
+        Optional<AccountTransaction> account = accountTransactionRepository.findByAccountId(accountId);
 
         List<AccountTransactionResponseDTO> list =  response.getPayload().getList();
         if(account.isEmpty() && !CollectionUtils.isEmpty(list)){
