@@ -14,6 +14,5 @@ public class AddressDTO implements DTO {
     @Size(max = 40)
     private String address;
     private String city;
-    //TODO check ISO 3166-1 alpha 2 standard
     private String countryCode;
 }

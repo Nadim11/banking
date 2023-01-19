@@ -9,7 +9,6 @@ public class FeeTypeValidator implements ConstraintValidator<ValidFeeType, Strin
 
     @Override
     public boolean isValid(String feeType, ConstraintValidatorContext constraintValidatorContext) {
-       //TODO validate also if non-SEPA bank
         return FeeType.contains(feeType);
     }
 }
