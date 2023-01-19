@@ -1,10 +1,8 @@
 package com.fabrick.banking.entity.account;
 
+import com.fabrick.banking.embeddable.TransactionType;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -14,6 +12,7 @@ import java.sql.Date;
 @AllArgsConstructor
 @Getter
 @Setter
+@Builder
 @Entity
 public class Transaction implements Serializable {
 
@@ -25,8 +24,7 @@ public class Transaction implements Serializable {
     private Date            accountingDate;
     private Date            valueDate;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "transaction_type_id")
+    @Embedded
     private TransactionType type;
     private BigDecimal      amount;
     private String          currency;

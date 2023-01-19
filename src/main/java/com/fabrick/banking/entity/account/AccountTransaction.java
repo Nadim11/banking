@@ -1,10 +1,7 @@
 package com.fabrick.banking.entity.account;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.Set;
 
@@ -12,16 +9,17 @@ import java.util.Set;
 @AllArgsConstructor
 @Getter
 @Setter
-//@Entity
+@Builder
+@Entity
 public class AccountTransaction {
 
-    //@Id
-    //@GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int                 id;
 
     @Column(name = "account_id", unique = true)
     private String              accountId;
 
-    //@OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private Set<Transaction>    transactions;
 }

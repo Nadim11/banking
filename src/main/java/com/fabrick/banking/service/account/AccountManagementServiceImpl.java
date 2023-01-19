@@ -4,6 +4,7 @@ import com.fabrick.banking.dto.request.account.AccountTransactionRequest;
 import com.fabrick.banking.dto.response.account.AccountBalanceResponse;
 import com.fabrick.banking.dto.response.account.AccountTransactionResponse;
 import com.fabrick.banking.dto.response.account.AccountTransactionResponseDTO;
+import com.fabrick.banking.entity.account.AccountTransaction;
 import com.fabrick.banking.entity.account.Transaction;
 import com.fabrick.banking.feign.client.AccountManagementClient;
 import com.fabrick.banking.mapper.request.account.AccountTransactionRequestMapperImpl;
@@ -16,7 +17,9 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -41,12 +44,18 @@ public class AccountManagementServiceImpl implements AccountManagementService{
     public AccountTransactionResponse getAccountTransactions(String accountId, AccountTransactionRequest request) {
         AccountTransactionResponse response = accountTransactionResponseMapper.toDTO(accountManagementClient.getAccountTransactions(accountId, accountTransactionRequestMapper.fromDTO(request)));
 
+        Optional<AccountTransaction> account = accountTransactionRepository.findById(Integer.valueOf(accountId));
+
         List<AccountTransactionResponseDTO> list =  response.getPayload().getList();
-        if(!CollectionUtils.isEmpty(list)){
-            // map to entity and save to DB
+        if(account.isEmpty() && !CollectionUtils.isEmpty(list)){
             List<Transaction> transactions = accountTransactionDBResponseMapper.fromDTOList(list);
 
-            accountTransactionRepository.saveAll(transactions);
+            AccountTransaction accountToSave = AccountTransaction.builder()
+                    .accountId(accountId)
+                    .transactions(new HashSet<>(transactions))
+                    .build();
+
+            accountTransactionRepository.save(accountToSave);
         }
 
         return response;
