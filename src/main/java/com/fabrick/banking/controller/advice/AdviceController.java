@@ -18,6 +18,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.MissingRequestHeaderException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,25 +28,30 @@ import java.util.List;
 public class AdviceController {
 
     @ExceptionHandler(ForbiddenException.class)
+    @ResponseStatus(HttpStatus.FORBIDDEN)
     public ResponseEntity<ErrorReturnResponseDTO> handleException(ForbiddenException ex){
         return buildResponseEntity(HttpStatus.FORBIDDEN, ex);
     }
 
     @ExceptionHandler(BadRequestException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ResponseEntity<ErrorReturnResponseDTO> handleException(BadRequestException ex){
         return buildResponseEntity(HttpStatus.BAD_REQUEST, ex);
     }
 
     @ExceptionHandler(GenericException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ResponseEntity<ErrorReturnResponseDTO> handleException(GenericException ex){
         return buildResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR, ex);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ResponseEntity<ErrorReturnResponseDTO> handleException(MethodArgumentNotValidException ex){
         return handleException(new BadRequestException(handleBindingAndMethodArgumentNotValidException(ex.getBindingResult())));
     }
     @ExceptionHandler(BindException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ResponseEntity<ErrorReturnResponseDTO> handleException(BindException ex){
         return handleException(new BadRequestException(handleBindingAndMethodArgumentNotValidException(ex.getBindingResult())));
     }
@@ -87,6 +93,7 @@ public class AdviceController {
     }
 
     @ExceptionHandler(MissingRequestHeaderException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ResponseEntity<ErrorReturnResponseDTO> handleException(MissingRequestHeaderException ex){
         ErrorReturnResponseDTO errorReturnResponseDTO = ErrorReturnResponseDTO.builder()
                 .status(ErrorConstant.KO)
@@ -100,6 +107,7 @@ public class AdviceController {
     }
 
     @ExceptionHandler(Exception.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ResponseEntity<ErrorReturnResponseDTO> handleException(Exception ex){
         return handleException(new GenericException(buildExceptionErrorResponse()));
     }
