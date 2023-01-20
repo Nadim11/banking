@@ -10,10 +10,10 @@ public interface DTOMapper<D extends DTO, S extends Serializable> {
     S fromDTO(D d);
 
     default LocalDate map(Date date){
-        return date.toLocalDate();
+        return date == null ? null : date.toLocalDate();
     }
 
     default Date map(LocalDate localDate){
-        return Date.valueOf(localDate);
+        return localDate == null ? null : Date.valueOf(localDate);
     }
 }
