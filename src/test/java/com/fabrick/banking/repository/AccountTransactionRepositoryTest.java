@@ -7,6 +7,7 @@ import com.fabrick.banking.mapper.response.account.AccountTransactionDBResponseM
 import com.fabrick.banking.repository.account.AccountTransactionRepository;
 import com.fabrick.banking.util.ResourceUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -25,7 +26,7 @@ import static com.fabrick.banking.constant.Constants.ACCOUNT_ID;
 class AccountTransactionRepositoryTest {
 
     private static final String                           PATH = "account/response/transactions.json";
-    private final ObjectMapper                            mapper = new ObjectMapper();
+    private final ObjectMapper                            mapper = new ObjectMapper().registerModule(new JavaTimeModule());
     @Autowired
     private AccountTransactionRepository                  accountTransactionRepository;
 

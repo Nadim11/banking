@@ -127,6 +127,12 @@
 							<version>${org.lombokproject.version}</version>
 						</path>
 
+						<dependency>
+							<groupId>com.fasterxml.jackson.datatype</groupId>
+							<artifactId>jackson-datatype-jsr310</artifactId>
+							<version>2.14.1</version>
+						</dependency>
+
 						<!-- Used by springdoc-openapi-starter-common for Javadoc support
 						<path>
 							<groupId>com.github.therapi</groupId>

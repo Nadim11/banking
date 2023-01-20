@@ -5,6 +5,7 @@ import lombok.*;
 
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.time.LocalDate;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -13,7 +14,7 @@ import java.sql.Date;
 @Setter
 public class AccountBalanceResponseDTO implements DTO {
 
-    private Date        date;
+    private LocalDate   date;
     private BigDecimal  balance;
     private BigDecimal  availableBalance;
     private String      currency;

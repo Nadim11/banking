@@ -8,6 +8,7 @@ import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @NoArgsConstructor
@@ -28,8 +29,8 @@ public class PaymentTransferPayloadDTO implements DTO {
     private String                      description;
     private String                      createdDatetime;
     private String                      accountedDatetime;
-    private Date                        debtorValueDate;
-    private Date                        creditorValueDate;
+    private LocalDate                   debtorValueDate;
+    private LocalDate                   creditorValueDate;
     private AmountResponseDTO           amount;
     private Boolean                     isUrgent;
     private Boolean                     isInstant;

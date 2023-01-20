@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,10 +19,10 @@ public class AccountTransactionRequest implements Request {
     @NotNull(message = ErrorConstant.NOT_NULL)
     @JsonFormat
             (shape = JsonFormat.Shape.STRING, pattern = PatternConstant.YYYY_MM_DD)
-    private Date    fromAccountingDate;
+    private LocalDate   fromAccountingDate;
 
     @NotNull(message = ErrorConstant.NOT_NULL)
     @JsonFormat
             (shape = JsonFormat.Shape.STRING, pattern = PatternConstant.YYYY_MM_DD)
-    private Date    toAccountingDate;
+    private LocalDate    toAccountingDate;
 }

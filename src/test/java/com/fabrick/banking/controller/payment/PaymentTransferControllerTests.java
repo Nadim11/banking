@@ -6,6 +6,7 @@ import com.fabrick.banking.dto.response.payment.PaymentTransferResponse;
 import com.fabrick.banking.service.payment.PaymentTransferServiceImpl;
 import com.fabrick.banking.util.PaymentTransferRequestBuilder;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,7 +62,7 @@ class PaymentTransferControllerTests {
 
     private static String asJsonString(final Object obj) {
         try {
-            return new ObjectMapper().writeValueAsString(obj);
+            return new ObjectMapper().registerModule(new JavaTimeModule()).writeValueAsString(obj);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

@@ -5,6 +5,7 @@ import lombok.*;
 
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.time.LocalDate;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -15,8 +16,8 @@ public class AccountTransactionResponseDTO implements DTO {
 
     private String                              transactionId;
     private String                              operationId;
-    private Date                                accountingDate;
-    private Date                                valueDate;
+    private LocalDate                           accountingDate;
+    private LocalDate                           valueDate;
     private AccountTransactionTypeResponseDTO   type;
     private BigDecimal                          amount;
     private String                              currency;

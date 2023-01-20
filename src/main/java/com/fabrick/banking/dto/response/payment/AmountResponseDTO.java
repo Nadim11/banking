@@ -10,6 +10,7 @@ import lombok.experimental.SuperBuilder;
 
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.time.LocalDate;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -22,6 +23,6 @@ public class AmountResponseDTO implements DTO {
     private String      debtorCurrency;
     private BigDecimal  creditorAmount;
     private String      creditorCurrency;
-    private Date        creditorCurrencyDate;
+    private LocalDate   creditorCurrencyDate;
     private Integer     exchangeRate;
 }

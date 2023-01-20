@@ -12,6 +12,7 @@ import lombok.*;
 
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.time.LocalDate;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -24,7 +25,7 @@ public class PaymentTransferRequest implements Request {
     @NotNull(message = ErrorConstant.NOT_NULL)
     @Valid
     private CreditorDTO     creditor;
-    private Date            executionDate;
+    private LocalDate       executionDate;
     private String          uri;
     @NotNull(message = ErrorConstant.NOT_NULL)
     @Size(max = 140)
